@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dual-fw-svm"
+version = "0.1.1"
+description = "Fast Python reproduction of dual proximal and Frank-Wolfe SVM optimizers."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "LicenseRef-Proprietary"
+authors = [
+    { name = "axelxrd" },
+]
+keywords = [
+    "svm",
+    "support-vector-machine",
+    "frank-wolfe",
+    "optimization",
+    "machine-learning",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.9",
+]
+
+[project.urls]
+Homepage = "https://github.com/1want2beaQuant/dual-fw-svm"
+Source = "https://github.com/1want2beaQuant/dual-fw-svm"
+Issues = "https://github.com/1want2beaQuant/dual-fw-svm/issues"
+PyPI = "https://pypi.org/project/dual-fw-svm/"
+Paper = "https://opt-ml.org/papers/2025/paper10.pdf"
+
+[project.optional-dependencies]
+benchmark = [
+    "pandas>=1.5",
+    "scikit-learn>=1.2",
+]
+test = [
+    "scikit-learn>=1.2",
+]
+
+[tool.setuptools]
+packages = ["dual_fw_svm"]

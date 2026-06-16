@@ -1,0 +1,10 @@
+task,method,fit_time_s,train_acc,test_acc,n_iter,objective,notes
+binary,sklearn-LinearSVC,0.0116,0.8961,0.8617,6,,liblinear; C/2 matches paper scaling approximately
+binary,sklearn-SGD-squared-hinge,0.0587,0.8471,0.8408,170,,first-order stochastic baseline
+binary,paper-l2-dual-prox,0.2297,0.8957,0.8633,400,-35.04699913796218,"Algorithm 1, no Gram matrix"
+multiclass,paper-CS-matrix-FW,0.0762,1.0,0.9593,300,-8.691205178058242,Algorithm 2 Crammer-Singer
+multiclass,paper-WW-matrix-FW,0.0796,1.0,0.9537,300,-8.191432354148485,Algorithm 2 Weston-Watkins
+multiclass,paper-CS-block-FW,0.093,0.9809,0.9481,5000,-4.934490525064913,Algorithm 3 stochastic row FW
+multiclass,sklearn-OVR-LinearSVC,0.1133,0.9061,0.9,,,one-vs-rest common production baseline
+multiclass,sklearn-LinearSVC-CS,0.1349,1.0,0.9537,913,,liblinear direct multiclass baseline
+multiclass,sklearn-SGD-hinge,0.4333,0.9833,0.9537,629,,stochastic large-scale baseline

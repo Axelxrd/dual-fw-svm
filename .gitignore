@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pkg_smoke/
+.pypi_smoke/
+.venv/
+venv/
+
+# Local source paper; do not publish or push redistributed PDFs by default.
+10_New_Optimization_Methods_fo.pdf
