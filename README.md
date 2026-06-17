@@ -2,7 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/dual-fw-svm.svg)](https://pypi.org/project/dual-fw-svm/)
 [![Python](https://img.shields.io/pypi/pyversions/dual-fw-svm.svg)](https://pypi.org/project/dual-fw-svm/)
-[![Source](https://img.shields.io/badge/source-GitHub-24292f.svg)](https://github.com/1want2beaQuant/dual-fw-svm)
+[![Source](https://img.shields.io/badge/source-GitHub-24292f.svg)](https://github.com/Axelxrd/dual-fw-svm)
 
 Fast linear SVM solvers built around dual proximal updates and matrix-wise
 Frank-Wolfe optimization. The implementation is designed for experimentation
