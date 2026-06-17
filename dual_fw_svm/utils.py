@@ -164,8 +164,8 @@ def project_nonnegative_balanced(
 ) -> np.ndarray:
     """Project beta onto {alpha >= 0, <alpha, y> = 0}.
 
-    The paper derives alpha = [beta - lambda y]_+. The scalar lambda is found
-    by bisection because the balance equation is monotone decreasing.
+    The projection has the form alpha = [beta - lambda y]_+. The scalar lambda
+    is found by bisection because the balance equation is monotone decreasing.
     """
 
     beta = np.asarray(beta, dtype=np.float64)

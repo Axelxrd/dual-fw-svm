@@ -1,4 +1,4 @@
-"""Benchmark the reproduced optimizers against common sklearn baselines."""
+"""Benchmark the package optimizers against common sklearn baselines."""
 
 from __future__ import annotations
 
@@ -104,7 +104,7 @@ def run_binary(args: argparse.Namespace) -> list[Result]:
     results = [
         _fit_result(
             "binary",
-            "paper-l2-dual-prox",
+            "l2-dual-prox",
             lambda: BinaryL2DualSVM(
                 C=args.C,
                 max_iter=args.binary_iter,
@@ -116,7 +116,7 @@ def run_binary(args: argparse.Namespace) -> list[Result]:
             X_test,
             y_train,
             y_test,
-            notes="Algorithm 1, no Gram matrix",
+            notes="dual proximal update, no Gram matrix",
         ),
         _fit_result(
             "binary",
@@ -134,7 +134,7 @@ def run_binary(args: argparse.Namespace) -> list[Result]:
             X_test,
             y_train,
             y_test,
-            notes="liblinear; C/2 matches paper scaling approximately",
+            notes="liblinear; C/2 matches this package's squared-slack scaling approximately",
         ),
         _fit_result(
             "binary",
@@ -179,7 +179,7 @@ def run_multiclass(args: argparse.Namespace) -> list[Result]:
     results = [
         _fit_result(
             "multiclass",
-            "paper-CS-matrix-FW",
+            "cs-matrix-FW",
             lambda: MulticlassFrankWolfeSVM(
                 C=args.C,
                 formulation="cs",
@@ -191,11 +191,11 @@ def run_multiclass(args: argparse.Namespace) -> list[Result]:
             X_test,
             y_train,
             y_test,
-            notes="Algorithm 2 Crammer-Singer",
+            notes="matrix-wise Crammer-Singer",
         ),
         _fit_result(
             "multiclass",
-            "paper-WW-matrix-FW",
+            "ww-matrix-FW",
             lambda: MulticlassFrankWolfeSVM(
                 C=args.C,
                 formulation="ww",
@@ -207,11 +207,11 @@ def run_multiclass(args: argparse.Namespace) -> list[Result]:
             X_test,
             y_train,
             y_test,
-            notes="Algorithm 2 Weston-Watkins",
+            notes="matrix-wise Weston-Watkins",
         ),
         _fit_result(
             "multiclass",
-            "paper-CS-block-FW",
+            "cs-block-FW",
             lambda: BlockCoordinateFrankWolfeSVM(
                 C=args.C,
                 formulation="cs",
@@ -224,7 +224,7 @@ def run_multiclass(args: argparse.Namespace) -> list[Result]:
             X_test,
             y_train,
             y_test,
-            notes="Algorithm 3 stochastic row FW",
+            notes="stochastic row-wise Frank-Wolfe",
         ),
         _fit_result(
             "multiclass",

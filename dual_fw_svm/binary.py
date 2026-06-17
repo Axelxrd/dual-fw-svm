@@ -1,4 +1,4 @@
-"""Binary L2-SVM via the paper's dual-of-dual proximal method."""
+"""Binary L2-SVM via a dual proximal method."""
 
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ from .utils import (
 
 @dataclass
 class BinaryL2DualSVM:
-    """Binary L2-loss SVM solver based on Algorithm 1 in the paper.
+    """Binary L2-loss SVM solver with a balanced dual proximal update.
 
     The implementation targets large linear problems and never forms the
     n-by-n Gram matrix. It solves
@@ -30,7 +30,7 @@ class BinaryL2DualSVM:
         min 0.5 alpha^T K alpha + 1/(2C)||alpha||^2 - 1^T alpha
         s.t. alpha >= 0, y^T alpha = 0.
 
-    Parameters follow the paper's primal scaling
+    The regularization parameter follows the primal scaling
     0.5||w||^2 + C/2 * sum_i xi_i^2.
     """
 

@@ -1,4 +1,4 @@
-"""Fast reproductions of the SVM optimizers from the OPT2025 paper."""
+"""Fast dual proximal and Frank-Wolfe SVM optimizers."""
 
 from .binary import BinaryL2DualSVM
 from .multiclass import BlockCoordinateFrankWolfeSVM, MulticlassFrankWolfeSVM

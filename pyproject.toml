@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dual-fw-svm"
-version = "0.1.1"
-description = "Fast Python reproduction of dual proximal and Frank-Wolfe SVM optimizers."
+version = "0.1.2"
+description = "Fast dual proximal and Frank-Wolfe SVM optimizers."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "LicenseRef-Proprietary"
@@ -41,7 +41,6 @@ Homepage = "https://github.com/1want2beaQuant/dual-fw-svm"
 Source = "https://github.com/1want2beaQuant/dual-fw-svm"
 Issues = "https://github.com/1want2beaQuant/dual-fw-svm/issues"
 PyPI = "https://pypi.org/project/dual-fw-svm/"
-Paper = "https://opt-ml.org/papers/2025/paper10.pdf"
 
 [project.optional-dependencies]
 benchmark = [

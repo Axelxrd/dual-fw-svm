@@ -1,4 +1,4 @@
-exclude 10_New_Optimization_Methods_fo.pdf
-exclude paper_text.txt
+exclude *.pdf
+exclude *_text.txt
 recursive-exclude * __pycache__
 recursive-exclude * *.py[cod]

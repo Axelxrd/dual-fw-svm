@@ -4,21 +4,19 @@
 [![Python](https://img.shields.io/pypi/pyversions/dual-fw-svm.svg)](https://pypi.org/project/dual-fw-svm/)
 [![Source](https://img.shields.io/badge/source-GitHub-24292f.svg)](https://github.com/1want2beaQuant/dual-fw-svm)
 
-Fast linear SVM solvers that reproduce the dual proximal and matrix-wise
-Frank-Wolfe algorithms from *New Optimization Methods for Large Scale SVMs*.
-The implementation is designed for direct experimentation with the paper's
-optimization ideas while keeping memory use low on linear datasets.
+Fast linear SVM solvers built around dual proximal updates and matrix-wise
+Frank-Wolfe optimization. The implementation is designed for experimentation
+with memory-efficient SVM training on linear datasets.
 
 ## What Is Included
 
-- `BinaryL2DualSVM`: Algorithm 1, a proximal-gradient solver for binary L2-SVM
-  dual variables with the paper's second-dual projection step.
-- `MulticlassFrankWolfeSVM`: Algorithm 2, matrix-wise Frank-Wolfe for
+- `BinaryL2DualSVM`: a proximal-gradient solver for binary L2-SVM dual
+  variables with an efficient equality-constrained nonnegative projection.
+- `MulticlassFrankWolfeSVM`: matrix-wise Frank-Wolfe for
   Crammer-Singer (`formulation="cs"`) and Weston-Watkins (`formulation="ww"`)
   multiclass SVMs.
-- `BlockCoordinateFrankWolfeSVM`: Algorithm 3 style stochastic row-wise FW
-  baseline for comparison with the paper's matrix-wise update.
-- `benchmarks/compare_svm.py`: compares the reproduction with common sklearn
+- `BlockCoordinateFrankWolfeSVM`: stochastic row-wise Frank-Wolfe baseline.
+- `benchmarks/compare_svm.py`: compares these solvers with common sklearn
   baselines: `LinearSVC`, `LinearSVC(multi_class="crammer_singer")`,
   one-vs-rest `LinearSVC`, and `SGDClassifier`.
 
@@ -77,13 +75,13 @@ Current local benchmark results on synthetic binary data and sklearn digits:
 | Task | Method | Fit time | Test accuracy |
 | --- | --- | ---: | ---: |
 | binary | sklearn LinearSVC | 0.0116s | 0.8617 |
-| binary | paper L2 dual prox | 0.2297s | 0.8633 |
-| multiclass | paper CS matrix-FW | 0.0762s | 0.9593 |
-| multiclass | paper WW matrix-FW | 0.0796s | 0.9537 |
+| binary | L2 dual prox | 0.2297s | 0.8633 |
+| multiclass | CS matrix-FW | 0.0762s | 0.9593 |
+| multiclass | WW matrix-FW | 0.0796s | 0.9537 |
 | multiclass | sklearn LinearSVC CS | 0.1349s | 0.9537 |
 | multiclass | sklearn SGD hinge | 0.4333s | 0.9537 |
 
-The binary solver is a transparent Python reproduction and is not expected to
+The binary solver is a transparent Python implementation and is not expected to
 beat LIBLINEAR on small dense problems. The matrix-wise multiclass solver is the
 main speed-oriented implementation.
 
@@ -109,9 +107,9 @@ benchmarks/results_latest.csv
 
 ## Notes
 
-- `BinaryL2DualSVM.C` follows the paper's scaling:
+- `BinaryL2DualSVM.C` uses this squared-slack scaling:
   `0.5 ||w||^2 + C/2 * sum_i xi_i^2`.
-- The multiclass implementations follow the no-bias formulation in the paper.
+- The multiclass implementations use a no-bias formulation.
   Standardizing dense features before fitting is recommended for faster
   convergence and fair comparison.
 - The benchmark uses `LinearSVC(C=C/2, loss="squared_hinge")` for the binary

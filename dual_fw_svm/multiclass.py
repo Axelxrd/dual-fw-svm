@@ -23,9 +23,8 @@ Formulation = Literal["cs", "ww"]
 class MulticlassFrankWolfeSVM:
     """Matrix-wise Frank-Wolfe solver for Crammer-Singer or Weston-Watkins SVM.
 
-    This is Algorithm 2 from the paper. For linear features it stores only
-    alpha (n x K) and W = X.T @ alpha, avoiding the n-by-n kernel matrix and the
-    huge Kronecker QP matrix.
+    For linear features it stores only alpha (n x K) and W = X.T @ alpha,
+    avoiding the n-by-n kernel matrix and the huge Kronecker QP matrix.
     """
 
     C: float = 1.0
@@ -171,7 +170,7 @@ class MulticlassFrankWolfeSVM:
 
 @dataclass
 class BlockCoordinateFrankWolfeSVM:
-    """Stochastic row-wise FW baseline corresponding to Algorithm 3."""
+    """Stochastic row-wise Frank-Wolfe baseline."""
 
     C: float = 1.0
     formulation: Formulation = "cs"
